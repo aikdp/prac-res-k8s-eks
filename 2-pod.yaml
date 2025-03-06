@@ -1,0 +1,11 @@
+apiVersio: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    project: nginx
+    environment: dev
+spec:
+  container:
+    - name: nginx
+      image: nginx:alpine
