@@ -9,7 +9,7 @@ metadata:
 spec:
   replicas: 2
   selector:
-   matchLabels:
+    matchLabels:
       app: frontend
       tier: stage
   template:
@@ -17,7 +17,7 @@ spec:
       labels:
         app: frontend
         tier: stage
-      spec:
+    spec:
         containers:
         - name: nginx
           images: nginx:stable-perl
