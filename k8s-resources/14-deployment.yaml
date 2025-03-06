@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: dep-nginx
-        image: nginx
+        image: nginx-almalinux
 
 
 
