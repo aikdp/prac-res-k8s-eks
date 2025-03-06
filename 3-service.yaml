@@ -2,13 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pod-srvc
-  labels:
-    project: nginx
-    environment: dev
+  # labels:
+  #   project: nginx
+  #   environment: dev
 spec:
   selector:
    - name: nginx-pod
   ports:
-    - protocol: TCP
+    - name: cluster-ip
+      protocol: TCP
       port: 80
       targetPort: 80
