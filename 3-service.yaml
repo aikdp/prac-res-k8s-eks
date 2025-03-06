@@ -5,6 +5,8 @@ metadata:
   # labels:
   #   project: nginx
   #   environment: dev
+
+type: LoadBalancer
 spec:
   selector:
     project: nginx
