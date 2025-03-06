@@ -5,8 +5,8 @@ metadata:
   name: lb-serv
 spec:
   selector:
-    app: frontend
-    tier: stage
+     app: backend
+     module: qa
   ports:
     - name: lb-svc-nginx
       protocol: TCP
