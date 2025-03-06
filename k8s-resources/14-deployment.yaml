@@ -16,7 +16,7 @@ spec:
       labels:
         app: backend
         module: qa
-  spec:
-    containers:
+    spec:
+      containers:
       - name: dep-nginx
         images: nginx:almalinux
