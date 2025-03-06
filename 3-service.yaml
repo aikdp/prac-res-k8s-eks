@@ -5,14 +5,14 @@ metadata:
   # labels:
   #   project: nginx
   #   environment: dev
-
-type: LoadBalancer
 spec:
   selector:
     project: nginx
     environment: dev
+    
   ports:
     - name: cluster-ip
       protocol: TCP
       port: 80
       targetPort: 80
+type: LoadBalancer
