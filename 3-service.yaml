@@ -6,6 +6,7 @@ metadata:
   #   project: nginx
   #   environment: dev
 spec:
+  type: LoadBalancer
   selector:
     project: nginx
     environment: dev
@@ -15,4 +16,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
-Type: LoadBalancer
+  
