@@ -6,6 +6,6 @@ metadata:
     project: nginx
     environment: dev
 spec:
-  container:
+  containers:
     - name: nginx
       image: nginx:alpine
