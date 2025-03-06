@@ -10,13 +10,13 @@ spec:
   replicas: 2
   selector:
    matchLabels:
-      project: nginx
-      environment: dev
+      app: frontend
+      tier: stage
   template:
     metadata:
       labels:
-        project: nginx
-        environment: dev
+        app: frontend
+        tier: stage
       spec:
         containers:
         - name: nginx
