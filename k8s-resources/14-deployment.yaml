@@ -18,5 +18,5 @@ spec:
         module: qa
     spec:
       containers:
-      - name: dep-nginx
+      - name: pod-dep
         images: nginx:almalinux
