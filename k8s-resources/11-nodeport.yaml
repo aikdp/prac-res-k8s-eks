@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: nodeport-svc
+  labels:
+    project: expense
+    component: tetsing
+spec: 
+  selector:
+    project: nginx
+    environment: dev
+  ports:
+    - name: node-port-svc
+      protocol: TCP
+      port: 80  #service port
+      targetPort: 80  #Container Port
+  type: NodePort

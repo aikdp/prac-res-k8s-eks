@@ -1,0 +1,13 @@
+apiVesrion: v1
+kind: Pod
+metadata: 
+  name: label
+  lables:
+    module: k8s
+    componenet: labels
+    environement: practice
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+

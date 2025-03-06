@@ -1,0 +1,14 @@
+#Service LoadBalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-serv
+spec:
+  selector:
+    name: pod-sec
+  ports:
+    - name: lb-svc-nginx
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

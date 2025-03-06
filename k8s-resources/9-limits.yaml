@@ -1,0 +1,19 @@
+apiVesrion: v1
+kind: Pod
+metadata: 
+  name: limit
+  lables:
+    module: k8s
+    componenet: limits
+    environement: practice
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        requests:
+          cpu: 120m
+          memory: 20Mi
+        limits:
+          cpu: 150m
+          memeory: 50MiB

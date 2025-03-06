@@ -1,0 +1,56 @@
+apiVesrion: v1
+kind: ConfigMap
+metadata: 
+  name: configmap-prac
+  lables:
+    module: k8s
+    componenet: labels
+    environement: practice
+data:
+  backend: "backend.telugudevops.online"
+  mysql: "mysl.telugudevops.online"
+  password: "ExpenseApp@1"
+  user: "ec2-user"
+  type: "ssh"
+# ---
+# apiVesrion: v1
+# kind: Pod
+# metadata: 
+#   name: pod-configmap
+#   lables:
+#     module: k8s
+#     componenet: pod-config
+#     environement: practice
+# spec:
+#   containers:
+#     - name: nginx
+#       image: nginx
+#       env:
+#       - name: backend
+#         valueFrom:
+#           configMapKeyRef:
+#             name: configmap-prac
+#             key: backend
+#       - name: password
+#         envFrom:
+#           configMapKeyRef:
+#             name: configmap-prac
+#             key: password
+---
+#Best practcie
+apiVesrion: v1
+kind: Pod
+metadata: 
+  name: pod-configmap
+  lables:
+    module: k8s
+    componenet: pod-config
+    environement: practice
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      envFrom:
+      - configMapRef:
+          name: configmap-prac
+            

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotations
+  annotations:
+    myDomain: "telugduevops.online"
+    app: "expense.telugudevops.online"
+    gitHub: "https://github.com/aikdp/k8-expense.git"
+spec:
+  containers:
+    - name: nginx
+      images: nginx:almalinux
+  
