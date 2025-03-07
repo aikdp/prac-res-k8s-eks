@@ -36,7 +36,9 @@ metadata:
     tier: db
 spec:
   selector:
-    name: mysql
+     project: expense
+     component: mysql
+     tier: db
   ports:
     - name: db-port
       protocol: TCP
