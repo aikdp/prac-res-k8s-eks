@@ -8,7 +8,7 @@ metadata:
 spec:
   capacity:
     storage: 20Gi
-  volumeMode: Block
+  volumeType: Block
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
