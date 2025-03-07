@@ -41,10 +41,10 @@ kind: Service
 metadata: 
   name: backend
   namespace: expense
-  labels:
-    project: expense
-    component: backend
-    tier: app
+  # labels:
+  #   project: expense
+  #   component: backend
+  #   tier: app
 spec:
   selector:
     project: expense
