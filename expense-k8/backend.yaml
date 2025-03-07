@@ -47,7 +47,9 @@ metadata:
     tier: app
 spec:
   selector:
-    name: backend
+    project: expense
+    component: backend
+    tier: app
   ports:
     - name: backend-port
       protocol: TCP
