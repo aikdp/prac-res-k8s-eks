@@ -28,7 +28,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: backend
+  name: frontend
   namespace: expense
   labels:
     project: expense
@@ -36,7 +36,9 @@ metadata:
     tier: web
 spec:
   selector:
-    name: frontend
+     project: expense
+     component: frontend
+     tier: web
   ports:
     - name: frontend-port
       protocol: TCP
