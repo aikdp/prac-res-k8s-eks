@@ -33,8 +33,8 @@ spec:
         - name: backend
           image: kdprasad028/backend:v1
           envFrom:
-            - configMapRef:
-                name: backend
+          - configMapRef:
+              name: backend
 ---
 apiVersion: v1
 kind: Service
