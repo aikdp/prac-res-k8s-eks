@@ -1,0 +1,65 @@
+#create PV
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: static-ebs
+  labels:
+    release: "stable"
+spec:
+  capacity:
+    storage: 20Gi
+  volumeMode: Block
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+
+#  vol-03c4b618f1427bb48
+---
+#Create PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-static-ebs
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 8Gi
+  selector:
+    matchLabels:
+      release: "stable"
+---
+#Attach to pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-static-ebs
+  labels:
+    release: "stable"
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx
+      volumeMounts:
+      - mountPath: "/usr/share/nginx/html"
+        name: ebs-static-pod
+  volumes:
+    - name: ebs-static-pod
+      persistentVolumeClaim:
+        claimName: pvc-static-ebs
+---
+#Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ebs-static
+spec:
+  selector:
+    app.kubernetes.io/name: pod-static-ebs
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
