@@ -25,8 +25,7 @@ spec:
     app: db
     environment: qa
   ports:
-  - name: svc-port
-    protocol: TCP
+  - protocol: TCP
     port: 3306
     targetPort: 3306
 ---
@@ -42,8 +41,7 @@ spec:
     app: db
     environment: qa
   ports:
-  - name: svc
-    protocol: TCP
+  - protocol: TCP
     port: 3306
     targetPort: 3306
 ---
