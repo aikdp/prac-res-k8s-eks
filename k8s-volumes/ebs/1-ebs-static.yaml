@@ -30,25 +30,25 @@ spec:
   resources:
     requests:
       storage: 2Gi
-# ---
-# #Attach to pod
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: pod-static-ebs
-#   labels:
-#     release: "stable"
-# spec:
-#   containers:
-#     - name: myfrontend
-#       image: nginx
-#       volumeMounts:
-#       - mountPath: "/usr/share/nginx/html"
-#         name: ebs-static-pod
-#   volumes:
-#     - name: ebs-static-pod
-#       persistentVolumeClaim:
-#         claimName: pvc-static-ebs
+---
+#Attach to pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-static-ebs
+  labels:
+    release: "stable"
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx
+      volumeMounts:
+      - mountPath: "/usr/share/nginx/html"
+        name: ebs-static-pod
+  volumes:
+    - name: ebs-static-pod
+      persistentVolumeClaim:
+        claimName: pvc-static-ebs
 # ---
 # #Service
 # apiVersion: v1
