@@ -40,9 +40,9 @@ spec:
   selector:
     state: dynamic
     value: provision
-  prots:
+  ports:
   - name: efs-dyn-nginx-ports
     protocol: TCP
-    ports: 80
+    port: 80
     targetPort: 80
   type: LoadBalancer
