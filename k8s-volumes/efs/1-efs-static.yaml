@@ -60,7 +60,7 @@ spec:
   selector:
     state: static
     store: cloud
-  prots:
+  ports:
   - name: efs-dyn-nginx-ports
     protocol: TCP
     ports: 80
