@@ -23,16 +23,15 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-static-ebs
 spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: static-ebs-pv
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
   resources:
     requests:
       storage: 2Gi
-  selector:
-    matchLabels:
-      release: "stable"
----
+# ---
 # #Attach to pod
 # apiVersion: v1
 # kind: Pod
