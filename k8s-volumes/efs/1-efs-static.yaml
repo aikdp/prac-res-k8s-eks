@@ -14,19 +14,19 @@ spec:
   csi:
     driver: efs.csi.aws.com
     volumeHandle: fs-064300bd5bbc62715 # Replace with your actual EFS File System ID
-# ---
-# # Create PVC pvc.yaml
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: efs-static-pvc
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   storageClassName: ""
-#   resources:
-#     requests:
-#       storage: 2Gi 
+---
+# Create PVC pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-static-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 2Gi 
 # ---
 # #Create Pod to cliam PV
 # apiVersion: v1
