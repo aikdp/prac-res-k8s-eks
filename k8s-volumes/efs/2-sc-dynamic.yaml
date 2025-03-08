@@ -4,9 +4,9 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: sc-dynamic-efs
 provisioner: ebs.csi.aws.com
-reclaimPolicy: Retain # default value is Delete
-allowVolumeExpansion: true
-volumeBindingMode: WaitForFirstConsumer
+# reclaimPolicy: Retain # default value is Delete
+# allowVolumeExpansion: true
+# volumeBindingMode: WaitForFirstConsumer
 parameters:
   provisioningMode: efs-ap
   fileSystemId: fs-064300bd5bbc62715 #relace with your fs id
