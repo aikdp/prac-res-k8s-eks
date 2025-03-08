@@ -6,7 +6,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: sc-dynamic-efs
+  storageClassName: "sc-dynamic-efs"
   resources:
     requests:
       storage: 3Gi
