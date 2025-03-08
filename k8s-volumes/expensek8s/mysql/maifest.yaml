@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-svc-normal
+  name: "mysql-svc-normal"
   namespace: expense
 spec:
   selector:
@@ -57,10 +57,10 @@ spec:
         image: kdprasad028/mysql:v1
         volumeMounts:
           - mountPath: "/var/lib/mysql"
-            name: dynamic-ebs-mysql
+            name: "dynamic-ebs-mysql"
   volumeClaimTemplates:
   - metadata:
-      name: dynamic-ebs-mysql
+      name: "dynamic-ebs-mysql"
     spec:
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: "sc-dynamic-ebs"
