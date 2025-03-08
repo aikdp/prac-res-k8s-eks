@@ -50,19 +50,19 @@ spec:
   - name: pv-efs-sts
     persistentVolumeClaim:
       claimName: efs-static-pvc
-# ---
-# #create Service to checkimg in Browser
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: svc-static-efs
-# spec:
-#   selector:
-#     state: static
-#     store: cloud
-#   prots:
-#   - name: efs-dyn-nginx-ports
-#     protocol: TCP
-#     ports: 80
-#     targetPort: 80
-#   type: LoadBalancer
+---
+#create Service to checkimg in Browser
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-static-efs
+spec:
+  selector:
+    state: static
+    store: cloud
+  prots:
+  - name: efs-dyn-nginx-ports
+    protocol: TCP
+    ports: 80
+    targetPort: 80
+  type: LoadBalancer
