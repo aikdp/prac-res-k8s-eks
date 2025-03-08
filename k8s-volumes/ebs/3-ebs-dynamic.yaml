@@ -10,4 +10,22 @@ spec:
     requests:
       storage: 2Gi
   storageClassName: sc-ebs-dynamic
-# ---
+---
+#Create Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-dynamic-ebs
+spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1a
+  containers:
+    - name: nginx-dynamic-ebs
+      image: nginx
+      volumeMounts:
+      - mountPath: "/usr/share/nginx/html"
+        name: dynamic-ebs
+  volumes:
+    - name: dynamic-ebs
+      persistentVolumeClaim:
+        claimName: ebs-dynamic-pvc
