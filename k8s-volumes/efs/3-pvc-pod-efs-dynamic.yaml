@@ -20,6 +20,8 @@ metadata:
     state: dynamic
     value: provision
 spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1d
   containers:
     - name: app
       image: nginx
