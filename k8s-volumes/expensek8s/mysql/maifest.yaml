@@ -1,17 +1,17 @@
-#Create PVC
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: "ebs-dynamic-pvc"
-  namespace: expense
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
-  storageClassName: "sc-dynamic-ebs"
----
+# #Create PVC
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: "ebs-dynamic-pvc"
+#   namespace: expense
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 2Gi
+#   storageClassName: "sc-dynamic-ebs"
+# ---
 #Create headless Service for statefulset
 apiVersion: v1
 kind: Service #headless service
@@ -72,10 +72,6 @@ spec:
           volumeMounts:
             - mountPath: "/var/lib/mysql"
               name: dynamic-ebs-mysql
-      # volumes:
-      #   - name: dynamic-ebs-mysql
-      #     persistentVolumeClaim:
-      #       claimName: "ebs-dynamic-pvc"
   volumeClaimTemplates:
   - metadata:
       name: dynamic-ebs-mysql
@@ -85,4 +81,40 @@ spec:
       resources:
         requests:
           storage: 3Gi
-
+# ---
+# apiVersion: apps/v1
+# kind: StatefulSet
+# metadata:
+#   name: mysql
+#   namespace: expense
+# spec:
+#   selector:
+#     matchLabels:
+#       project: robo
+#       app: db
+#       environment: qa
+#   serviceName: "svc-headless-mysql"
+#   replicas: 2
+#   minReadySeconds: 10
+#   template:
+#     metadata:
+#       labels:
+#         project: robo
+#         app: db
+#         environment: qa
+#     spec:
+#       containers:
+#         - name: mysql
+#           image: kdprasad028/mysql:v1 # Use official MySQL image
+#           volumeMounts:
+#             - mountPath: "/var/lib/mysql"
+#               name: dynamic-ebs-mysql
+#   volumeClaimTemplates:
+#     - metadata:
+#         name: dynamic-ebs-mysql
+#       spec:
+#         accessModes: [ "ReadWriteOnce" ]
+#         storageClassName: "sc-dynamic-ebs"
+#         resources:
+#           requests:
+#             storage: 3Gi
