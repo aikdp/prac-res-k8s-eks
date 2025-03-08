@@ -32,20 +32,20 @@ spec:
     - name: dynamic-ebs
       persistentVolumeClaim:
         claimName: ebs-dynamic-pvc
-# ---
-# #craete Service
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: svc-dynamic-ebs
-# spec:
-#   selector:
-#   - matchLabels:
-#       private: volume
-#       duration: march
-#   ports:
-#   - name: ebs-nginx-port
-#     protocol: TCP
-#     port: 80
-#     targetPort: 80
-#   type: LoadBalancer
+---
+#craete Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-dynamic-ebs
+spec:
+  selector:
+  - matchLabels:
+      private: volume
+      duration: march
+  ports:
+  - name: ebs-nginx-port
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
