@@ -7,7 +7,7 @@ metadata:
     release: "stable"
 spec:
   capacity:
-    storage: 20Gi
+    storage: 20Gi   #whatever u created manually in AWS, same will give her
   volumeType: Block
   accessModes:
     - ReadWriteOnce

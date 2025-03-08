@@ -1,0 +1,13 @@
+#Create PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-dynamic-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: ebs-sc
+---
