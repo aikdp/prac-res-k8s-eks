@@ -49,17 +49,17 @@ spec:
     - name: ebs-static-pod
       persistentVolumeClaim:
         claimName: pvc-static-ebs
-# ---
-# #Service
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: svc-ebs-static
-# spec:
-#   selector:
-#     app.kubernetes.io/name: pod-static-ebs
-#   ports:
-#     - protocol: TCP
-#       port: 80
-#       targetPort: 80
-#   type: LoadBalancer
+---
+#Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ebs-static
+spec:
+  selector:
+    app.kubernetes.io/name: pod-static-ebs
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
