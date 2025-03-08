@@ -1,0 +1,11 @@
+#Create Storage Class
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-dynamic-ebs
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+provisioner: ebs.csi.aws.com
+reclaimPolicy: Retain # default value is Delete
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer

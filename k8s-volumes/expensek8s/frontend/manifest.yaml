@@ -1,0 +1,45 @@
+#Create Frontend Manifest file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: expense
+  labels:
+    project: robo
+    tier: web
+    environment: qa
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: robo
+      tier: web
+      environment: qa
+  template:
+    metadata:
+      labels:
+        project: robo
+        tier: web
+        environment: qa
+    spec:
+      containers:
+        - name: frontend
+          image: kdprasad028/frontend:v1
+---
+#create Service for pod commu
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-frontend
+  namespace: expense
+spec:
+  selector:
+    project: robo
+    tier: web
+    environment: qa
+  ports:
+  - name: frotend-port
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
