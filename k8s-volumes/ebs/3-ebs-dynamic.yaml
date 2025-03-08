@@ -40,7 +40,7 @@ metadata:
   name: svc-dynamic-ebs
 spec:
   selector:
-  matchLabels:
+  - matchLabels:
       private: volume
       duration: march
   ports:
