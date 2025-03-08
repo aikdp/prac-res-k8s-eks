@@ -16,6 +16,9 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: pod-dynamic-ebs
+  labels:
+    private: volume
+    duration: march
 spec:
   nodeSelector:
     topology.kubernetes.io/zone: us-east-1a
@@ -29,3 +32,20 @@ spec:
     - name: dynamic-ebs
       persistentVolumeClaim:
         claimName: ebs-dynamic-pvc
+# ---
+# #craete Service
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: svc-dynamic-ebs
+# spec:
+#   selector:
+#   - matchLabels:
+#       private: volume
+#       duration: march
+#   ports:
+#   - name: ebs-nginx-port
+#     protocol: TCP
+#     port: 80
+#     targetPort: 80
+#   type: LoadBalancer
