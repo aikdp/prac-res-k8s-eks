@@ -27,28 +27,28 @@ spec:
   resources:
     requests:
       storage: 2Gi 
-# ---
-# #Create Pod to cliam PV
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#   name: pod-static-efs
-#   labels:
-#     state: static
-#     store: cloud
-# spec:
-#   nodeSelector:
-#     topology.kubenetes.io/name: us-east-  #check which region u created pv, that region should give
-#   containers:
-#   - name: app
-#     image: nginx
-#     volumeMounts:
-#     - name: pv-efs-sts
-#       mountPath: "/usr/share/nginx/html"
-#   volumes:
-#   - name: pv-efs-sts
-#     persistentVolumeClaim:
-#       claimName: efs-static-pvc
+---
+#Create Pod to cliam PV
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-static-efs
+  labels:
+    state: static
+    store: cloud
+spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1b  #check which region u created pv, that region should give
+  containers:
+  - name: app
+    image: nginx
+    volumeMounts:
+    - name: pv-efs-sts
+      mountPath: "/usr/share/nginx/html"
+  volumes:
+  - name: pv-efs-sts
+    persistentVolumeClaim:
+      claimName: efs-static-pvc
 # ---
 # #create Service to checkimg in Browser
 # apiVersion: v1
