@@ -36,7 +36,7 @@ spec:
         image: kdprasad028/backend:v1
         envFrom:
         - configMapRef:
-          namme: backend-config
+          name: backend-config
 ---
 #Create Service
 apiVersion: v1

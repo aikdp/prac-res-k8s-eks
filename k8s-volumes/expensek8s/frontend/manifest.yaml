@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: kdprasad028/frontend:v1
+          image: kdprasad028/pcfrontend:v1
 ---
 #create Service for pod commu
 apiVersion: v1
@@ -40,6 +40,6 @@ spec:
   ports:
   - name: frotend-port
     protocol: TCP
-    port: 80
-    targetPort: 80
+    port: 8080    #As we fronetnd image is baremin os, so not able to open 80, so chnaged nginx listens at8080.
+    targetPort: 8080
   type: LoadBalancer

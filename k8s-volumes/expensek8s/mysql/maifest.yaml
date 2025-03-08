@@ -71,8 +71,12 @@ spec:
       - name: mysql
         image: kdprasad028/mysql:v1
         volumeMounts:
-        - name: mysql
-          mountPath: "/var/lib/mysql"
+          - name: dynamic-ebs-mysql
+            mountPath: "/var/lib/mysql"
+        volumes:
+          - name: dynamic-ebs-mysql
+            persistentVolumeClaim:
+              claimName: "ebs-dynamic-pvc"
   # volumeClaimTemplates:
   # - metadata:
   #     name: mysql-pvc
