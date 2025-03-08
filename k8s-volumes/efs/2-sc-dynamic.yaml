@@ -1,0 +1,10 @@
+#Create SC
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: sc-dynamic-efs
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: fs-026bb4e33bea77857  #relace with your fs id
+  directoryPerms: "700"

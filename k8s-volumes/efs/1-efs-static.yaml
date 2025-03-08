@@ -1,0 +1,67 @@
+#Create PV for EFS
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-static-efs
+spec:
+  capacity:
+    storage: 5Gi  # EFS is virtually unlimited, but a value is required
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce  # Allows one nodes to mount
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle:  # Replace with your actual EFS File System ID
+---
+# Create PVC pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-static-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 2Gi 
+---
+#Create Pod to cliam PV
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-static-efs
+  labels:
+    state: static
+    store: cloud
+spec:
+  nodeSelector:
+    topology.kubenetes.io/name: us-east-  #check which region u created pv, that region should give
+  containers:
+  - name: app
+    image: nginx
+    volumeMounts:
+    - name: pv-efs-sts
+      mountPath: "/usr/share/nginx/html"
+  volumes:
+  - name: pv-efs-sts
+    persistentVolumeClaim:
+      claimName: efs-static-pvc
+---
+#create Service to checkimg in Browser
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-static-efs
+spec:
+  selector:
+    state: static
+    store: cloud
+  prots:
+  - name: efs-dyn-nginx-ports
+    protocol: TCP
+    ports: 80
+    targetPort: 80
+  type: LoadBalancer

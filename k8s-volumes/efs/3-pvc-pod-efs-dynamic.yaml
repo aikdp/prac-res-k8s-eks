@@ -1,0 +1,48 @@
+#create PVC 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-dynamic-efs
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: sc-dynamic-efs
+  resources:
+    requests:
+      storage: 3Gi
+---
+#Create pod with labels
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-dynamic-efs
+  labels:
+    state: dynamic
+    value: provision
+spec:
+  containers:
+    - name: app
+      image: nginx
+      volumeMounts:
+        - name: pv-dynmc-efs
+          mountPath: "/usr/share/nginx/html"
+  volumes:
+    - name: pv-dynmc-efs
+      persistentVolumeClaim:
+        claimName: pvc-dynamic-efs
+---
+#create Service to see volume in browser. working or not
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-dynamic-efs
+spec:
+  selector:
+    state: dynamic
+    value: provision
+  prots:
+  - name: efs-dyn-nginx-ports
+    protocol: TCP
+    ports: 80
+    targetPort: 80
+  type: LoadBalancer
