@@ -54,7 +54,8 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: kdprasad028/mysql:v1
+        # image: kdprasad028/mysql:v1
+        image: mysql:8.0
         volumeMounts:
           - name: mysql
             mountPath: /var/lib/mysql
