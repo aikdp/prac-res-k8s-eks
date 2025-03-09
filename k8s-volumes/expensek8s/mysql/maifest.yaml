@@ -52,15 +52,15 @@ spec:
         app: db
         environment: qa # has to match .spec.selector.matchLabels
     spec:
-      # securityContext:
-      #   fsGroup: 999  # Ensures MySQL has correct file permissions
+      securityContext:
+        fsGroup: 999  # Ensures MySQL has correct file permissions
       containers:
       - name: mysql
         image: kdprasad028/mysql:v1
         # image: mysql:8.0
-        # securityContext:
-        #   runAsUser: 999
-        #   runAsGroup: 999
+        securityContext:
+          runAsUser: 999
+          runAsGroup: 999
         volumeMounts:
           - name: mysql
             mountPath: /var/lib/mysql
