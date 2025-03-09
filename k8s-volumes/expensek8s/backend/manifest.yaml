@@ -5,7 +5,7 @@ metadata:
   name: backend-config
   namespace: expense
 data:
-  DB_HOST: "mysql-svc-normal"
+  DB_HOST: "mysql"
 ---
 #Create Backend Deployment set code
 apiVersion: apps/v1
