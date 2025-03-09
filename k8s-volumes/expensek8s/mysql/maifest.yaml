@@ -72,4 +72,4 @@ spec:
       storageClassName: "sc-dynamic-ebs"
       resources:
         requests:
-          storage: 3Gi
+          storage: 7Gi
