@@ -52,10 +52,15 @@ spec:
         app: db
         environment: qa # has to match .spec.selector.matchLabels
     spec:
+      securityContext:
+        fsGroup: 999  # Ensures MySQL has correct file permissions
       containers:
       - name: mysql
-        # image: kdprasad028/mysql:v1
-        image: mysql:8.0
+        image: kdprasad028/mysql:v1
+        # image: mysql:8.0
+        securityContext:
+          runAsUser: 999
+          runAsGroup: 999
         volumeMounts:
           - name: mysql
             mountPath: /var/lib/mysql
@@ -67,4 +72,4 @@ spec:
       storageClassName: "sc-dynamic-ebs"
       resources:
         requests:
-          storage: 4Gi
+          storage: 3Gi
