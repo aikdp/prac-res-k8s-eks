@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: kdprasad028/backend:{{ .Values.deployment.imageName }} 
+          image: "{{ .Values.deployment.imageName }}:{{ .Values.deployment.imageVersion }}"
           resources:
             requests:
               cpu: 100m
