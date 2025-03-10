@@ -11,6 +11,6 @@ spec:
   ports:
   - name: backend-port
     protocol: TCP
-    port: { .Values.service.service_port }
+    port: {{ .Values.service.servicePort }}
     targetPort: 80
-  type: { .Values.service.type }
+  type: {{ .Values.service.type }}

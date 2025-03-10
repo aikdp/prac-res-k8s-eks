@@ -7,7 +7,7 @@ metadata:
     project: robo
     state: qa
 spec:
-  replicas: { .Values.deployment.replica }
+  replicas: {{ .Values.deployment.replica }}
   selector:
     matchLabels:
       project: robo
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:{ .Values.deployment.image_version }
+          image: nginx:{{ .Values.deployment.imageVersion }}
           resources:
             requests:
               cpu: 100m
