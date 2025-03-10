@@ -17,4 +17,4 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: {{ .Values.hpa.cpuUtilisation }}  #these are called place holders
+        averageUtilization: {{ .Values.hpa.cpuUtilization }}  #these are called place holders

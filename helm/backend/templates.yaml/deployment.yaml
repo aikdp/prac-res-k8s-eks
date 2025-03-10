@@ -33,7 +33,10 @@ spec:
     spec:
       containers:
       - name: backend
-        image: {{ .Values.deployment.imageVersion }}
+        image: kdprasad028/backend:{{ .Values.deployment.imageVersion }}
+        envFrom:
+        - configMapRef:
+            name: backend-config
         resources:
           requests:
             cpu: 100m
@@ -41,6 +44,3 @@ spec:
           limits:            #limits should be greater than or equal to requests
             cpu: 100m
             memory: 128Mi
-        envFrom:
-        - configMapRef:
-            name: backend-config
