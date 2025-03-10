@@ -12,5 +12,5 @@ spec:
   ports:
   - name: backend-port
     protocol: TCP
-    port: {{ .Values.service.servicePort }}
-    targetPort: 8080
+    port: {{ .Values.service.servicePort }}  #here service port
+    targetPort: 8080  
