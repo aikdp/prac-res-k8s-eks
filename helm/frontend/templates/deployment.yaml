@@ -9,7 +9,7 @@ metadata:
     state: qa
     tier: frontend
 spec:
-  replicas: {{ .Values.deployment.replica }} 
+  replicas: 1
   selector:
     matchLabels:
       project: robo

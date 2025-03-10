@@ -1,6 +1,6 @@
 deployment:
   imageName: kdprasad028/pcfrontend:v1  #nginx 8080 image
-  replica: 2
+  # replica: 2
 hpa:
   cpuUtilisation: 5
 service:

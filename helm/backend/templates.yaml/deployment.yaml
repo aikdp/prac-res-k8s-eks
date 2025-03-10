@@ -5,7 +5,7 @@ metadata:
   name: backend-config
   namespace: expense
 data:
-  DB_HOST: mysql
+  DB_HOST: {{ .Values.configmap.dbHost }} #mysql
 ---
 #create backend YamlFile
 apiVersion: apps/v1
@@ -18,7 +18,7 @@ metadata:
     state: qa
     tier: backend
 spec:
-  replicas: {{ .Values.deployment.replica }}
+  replicas: 1 #{{ .Values.deployment.replica }}
   selector:
     matchLabels:
       project: robo
