@@ -1,0 +1,64 @@
+#create backend YamlFile
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: backend
+  namespace: expense
+  labels:
+    project: robo
+    state: qa
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: robo
+      state: qa
+      tier: backend
+  template:
+    metadata:
+      labels:
+        project: robo
+        state: qa
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: kdprasad028/backend:v1
+---
+#create Service to commu backend Pods
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: expense
+spec:
+  selector:
+    project: robo
+    state: qa
+    tier: backend
+  ports:
+  - name: backend-port
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+#create HPA
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 5
