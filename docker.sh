@@ -99,8 +99,13 @@ VALIDATE $? "Volume Resize"
 
 
 #K9s: Webi for Linux and macOS (https://github.com/derailed/k9s)
-curl -sS https://webinstall.dev/k9s | bash
+# curl -sS https://webinstall.dev/k9s | bash        Manullay working, but userdata not working
+curl -sL https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz -o k9s.tar.gz
+tar -xzf k9s.tar.gz
+sudo mv k9s /usr/local/bin/
 VALIDATE $? "Installation K9s UI"
+# k9s version
+
 
 #kubens 
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
@@ -110,6 +115,13 @@ VALIDATE $? "Installation kubens for NAMESPACE"
 
 #EBS CSI Driver
 #EFS CSI Drivers
+
+#HELM
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+VALIDATE $? "Installation of HELM"
+
 
 echo "Exit and Login Agian will work Docker commands. Thanks"
 
