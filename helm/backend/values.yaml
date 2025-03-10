@@ -1,5 +1,5 @@
 deployment:
-  imageName: kdprasad028/backend
+  imageName: "kdprasad028/backend"
   imageVersion: v1
   # replica: 2
 hpa:

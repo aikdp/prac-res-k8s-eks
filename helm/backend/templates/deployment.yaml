@@ -1,7 +1,7 @@
 #create backend YamlFile
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: backend
   namespace: expense
   labels:
@@ -29,6 +29,7 @@ spec:
             requests:
               cpu: 100m
               memory: 128Mi
-            limits:            #limits should be greater than or equal to requests
+            #limits should be greater than or equal to requests
+            limits:
               cpu: 100m
               memory: 128Mi
