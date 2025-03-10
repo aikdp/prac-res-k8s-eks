@@ -24,7 +24,14 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: kdprasad028/pcfrontend:v1
+          image: kdprasad028/pcfrontend:v1  
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:            #limits should be greater than or equal to requests
+              cpu: 100m
+              memory: 128Mi
 ---
 #create Service to commu frontend Pods
 apiVersion: v1
