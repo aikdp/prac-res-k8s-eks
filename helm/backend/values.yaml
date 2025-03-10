@@ -1,7 +1,7 @@
 deployment:
-  imageName: kdprasad028/backend:v1  
+  imageName: v1  
   # replica: 2
 hpa:
-  cpuUtilisation: 5
+  cpuUtilization: 5
 service:
   servicePort: 8080
