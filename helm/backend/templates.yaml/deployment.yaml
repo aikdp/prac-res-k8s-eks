@@ -1,12 +1,12 @@
-#COnfigMap: even if we not gvung also it works only when mysql service name is "mysql", otherwose u specifie BD_HOSt: "mysql-service-name"
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: backend-config
-  namespace: expense
-data:
-  DB_HOST: {{ .Values.configmap.dbHost }}
----
+# #COnfigMap: even if we not gvung also it works only when mysql service name is "mysql", otherwose u specifie BD_HOSt: "mysql-service-name"
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: backend-config
+#   namespace: expense
+# data:
+#   DB_HOST: {{ .Values.configmap.dbHost }}
+# ---
 #create backend YamlFile
 apiVersion: apps/v1
 kind: Deployment
