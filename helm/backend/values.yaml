@@ -1,7 +1,7 @@
 configmap:
   dbHost: mysql
 deployment:
-  imageName: "kdprasad028/backend:v1"
+  imageVersion: "kdprasad028/backend:v1"
   replica: 2
 hpa:
   cpuUtilisation: 5
