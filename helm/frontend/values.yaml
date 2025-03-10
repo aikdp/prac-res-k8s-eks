@@ -1,0 +1,7 @@
+deployment:
+  imageName: kdprasad028/pcfrontend:v1  #nginx 8080 image
+  replica: 2
+hpa:
+  cpuUtilisation: 5
+service:
+  servicePort: 8080   #nginx I changes to 8080, defalut bgibx listnes at 80

@@ -1,0 +1,34 @@
+#create frontend YamlFile
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: frontend
+  namespace: expense
+  labels:
+    project: robo
+    state: qa
+    tier: frontend
+spec:
+  replicas: {{ .Values.deployment.replica }} 
+  selector:
+    matchLabels:
+      project: robo
+      state: qa
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        project: robo
+        state: qa
+        tier: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: {{ .Values.deployment.imageName }} 
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:            #limits should be greater than or equal to requests
+              cpu: 100m
+              memory: 128Mi

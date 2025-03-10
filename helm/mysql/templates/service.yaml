@@ -1,0 +1,17 @@
+#create Service to commu mysql Pods
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: expense
+spec:
+  selector:
+    project: robo
+    state: qa
+    tier: db
+  ports:
+  - name: mysql-port
+    protocol: TCP
+    port: {{ .Values.service.servicePort }}
+    targetPort: 3306
+         

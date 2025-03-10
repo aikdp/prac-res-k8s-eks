@@ -1,0 +1,27 @@
+#create Mysql YamlFile
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mysql
+  namespace: expense
+  labels:
+    project: robo
+    state: qa
+    tier: db
+spec:
+  replicas: {{ .Values.deployment.replica }}
+  selector:
+    matchLabels:
+      project: robo
+      state: qa
+      tier: db
+  template:
+    metadata:
+      labels:
+        project: robo
+        state: qa
+        tier: db
+    spec:
+      containers:
+        - name: mysql
+          image: {{ .Values.deployment.imageName }}

@@ -1,0 +1,9 @@
+deployment:
+  imageName: kdprasad028/backend:v1
+  replica: 2
+hpa:
+  cpuUtilisation: 5
+configmap:
+  dbHost: mysql
+service:
+  servicePort: 8080

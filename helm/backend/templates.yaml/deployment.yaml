@@ -1,0 +1,46 @@
+#COnfigMap: even if we not gvung also it works only when mysql service name is "mysql", otherwose u specifie BD_HOSt: "mysql-service-name"
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: expense
+data:
+  DB_HOST: {{ .Values.configmap.dbHost }}
+---
+#create backend YamlFile
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: backend
+  namespace: expense
+  labels:
+    project: robo
+    state: qa
+    tier: backend
+spec:
+  replicas: {{ .Values.deployment.replica }}
+  selector:
+    matchLabels:
+      project: robo
+      state: qa
+      tier: backend
+  template:
+    metadata:
+      labels:
+        project: robo
+        state: qa
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: {{ .Values.deployment.imageName }}
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:            #limits should be greater than or equal to requests
+              cpu: 100m
+              memory: 128Mi
+          envFrom:
+            - configMapRef:
+                name: backend-config

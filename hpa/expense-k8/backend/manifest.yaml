@@ -1,3 +1,12 @@
+#create ConfigMap for DB_HOST=mysql
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: expense
+data:
+  DB_HOST: mysql
+---
 #create backend YamlFile
 apiVersion: apps/v1
 kind: Deployment
@@ -32,6 +41,9 @@ spec:
             limits:            #limits should be greater than or equal to requests
               cpu: 100m
               memory: 128Mi
+          envFrom:
+           - configMapRef:
+               name: backend-config
 ---
 #create Service to commu backend Pods
 apiVersion: v1
