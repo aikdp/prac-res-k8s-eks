@@ -42,5 +42,5 @@ spec:
               cpu: 100m
               memory: 128Mi
           envFrom:
-            - configMapRef:
-                name: backend-config
+          - configMapRef:
+              name: backend-config

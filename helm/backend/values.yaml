@@ -1,5 +1,5 @@
 deployment:
-  imageName: kdprasad028/backend:v1
+  imageName: kdprasad028/backend:v1 
   replica: 2
 hpa:
   cpuUtilisation: 5
