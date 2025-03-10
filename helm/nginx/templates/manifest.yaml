@@ -7,7 +7,7 @@ metadata:
     project: robo
     state: qa
 spec:
-  replicas: 2
+  replicas: { .Values.deployment.replica }
   selector:
     matchLabels:
       project: robo
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx
+          image: nginx:{ .Values.deployment.image_version }
           resources:
             requests:
               cpu: 100m
@@ -28,22 +28,6 @@ spec:
             limits:            #limits should be greater than or equal to requests
               cpu: 100m
               memory: 128Mi
----
-#create Service to commu backend Pods
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend
-  namespace: expense
-spec:
-  selector:
-    project: robo
-    state: qa
-  ports:
-  - name: backend-port
-    protocol: TCP
-    port: 80
-    targetPort: 80
 # ---
 # #create HPA
 # apiVersion: autoscaling/v2
