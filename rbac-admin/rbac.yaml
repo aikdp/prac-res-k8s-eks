@@ -35,7 +35,7 @@ metadata:
   namespace: expense
   name: role-all
 rules:
-- apiGroups: [""] # "" indicates the core API group, contains pods, services, namespaces, for accessing kubernets API.
+- apiGroups: ["*"] # "" indicates the core API group, contains pods, services, namespaces, for accessing kubernets API.
   resources: ["*"]   #only pods
   verbs: ["*"]
 ---

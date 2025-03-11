@@ -5,7 +5,7 @@ metadata:
   name: clstr-reader2
   namespace: expense
 rules:
-- apiGroups: [""]
+- apiGroups: ["*"]
   #
   # at the HTTP level, the name of the resource for accessing Secret
   # objects is "secrets"
