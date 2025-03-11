@@ -10,7 +10,7 @@ data:
       username: system:node:{{EC2PrivateDNSName}}
   mapUsers: |
     - groups:
-      - clstr-reader
+      - rl-pod
       userarn: arn:aws:iam::537124943253:user/suresh
       username: suresh
 kind: ConfigMap
@@ -20,3 +20,33 @@ metadata:
   namespace: kube-system
   # resourceVersion: "1336"   #it will once upadated and when u apply
   uid: 08e68376-c0ff-4369-b09e-576eb0a0532e
+
+
+
+#kubectl apply -f aws-auth-role.yaml
+
+ #Once apply, u will get updated configmap is below:
+  
+# apiVersion: v1
+# data:
+#   mapRoles: |
+#     - groups:
+#       - system:bootstrappers
+#       - system:nodes
+#       rolearn: arn:aws:iam::537124943253:role/eksctl-expense-dev-nodegroup-spot-NodeInstanceRole-XEplbFwzJfV4
+#       username: system:node:{{EC2PrivateDNSName}}
+#   mapUsers: |
+#     - groups:
+#       - clstr-reader
+#       userarn: arn:aws:iam::537124943253:user/suresh
+#       username: suresh
+# kind: ConfigMap
+# metadata:
+#   annotations:
+#     kubectl.kubernetes.io/last-applied-configuration: |
+#       {"apiVersion":"v1","data":{"mapRoles":"- groups:\n  - system:bootstrappers\n  - system:nodes\n  rolearn: arn:aws:iam::537124943253:role/eksctl-expense-dev-nodegroup-spot-NodeInstanceRole-XEplbFwzJfV4\n  username: system:node:{{EC2PrivateDNSName}}\n","mapUsers":"- groups:\n  - clstr-reader\n  userarn: arn:aws:iam::537124943253:user/suresh\n  username: suresh\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2025-03-11T09:45:16Z","name":"aws-auth","namespace":"kube-system","uid":"08e68376-c0ff-4369-b09e-576eb0a0532e"}}
+#   creationTimestamp: "2025-03-11T09:45:16Z"
+#   name: aws-auth
+#   namespace: kube-system
+#   resourceVersion: "6776"
+#   uid: 08e68376-c0ff-4369-b09e-576eb0a0532e

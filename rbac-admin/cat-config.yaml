@@ -1,0 +1,31 @@
+#when u login with suresh user , and update aws eks and cat config
+# will get this authentication
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJZE4zVTFBcjFlSVF3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TlRBek1URXdPVE0wTVRCYUZ3MHpOVEF6TURrd09UTTVNVEJhTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUUN3bC9iM0k0NU1MQVg3V3BucitIOXFJcWYzZjkyYmZvN1hpRUp6dTRMejRKMU40a1Q0YmpRUnl6WXEKUjQ1RXB6bkRYaUdSaVNBc25GQ2tKQWRRc094UjlaMEh0Qjk0Yjc2N0EvOXFNdnhHNWw0a2F6WWx4QmJlZitEQwpiWTJ5VVA4ZTZRWEhvU0JNeTdrUExaTjNYSTZoa09IS0QwVUhqalRCdHJwUkZZSkZqZkpCbXc1RWdLbWlTMnZDCi9qczFjaDhUakorSWlFTERVdXFvVzd5L0pQN2pkTXJ4OE55WndtRWs4N0FEZkRjQWJMcnhsQkxlR3BURGY1NFMKalVIaVVzM3hnRTlUcVRmbDF2d1h1THoxc1h0Q3F5QXZRYTRTbTFvU1BTOWd1UDYvcnpFcU1WMHNpc1VjL2pNTQo3ZzRrVklJRmZRTG54UTF1aTVwNC8zUWM2RjNwQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJUQ3lwbVJON3p2MUtPRWpFUTBncE9abXRka1VUQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQUdObG16TGF1UQo5YTYxWUpReWEwVE1oaHk4aHhsYmN2ZHZpSHJLMkpyemdQY05ETzBNU2x0bnhUdDFvdTVWMU9FUUtLUzRGcDhxCnU0L010Q2M3S2pEZnU5emd0NElqSEpRamVaYnFqL0FOd3VoUDJXRVl0b1RoQVpVMm9BVFhnTitvQnZ0Y2ZyWmUKbkVMTXluV3Bwcm9tMktGUnBseVErSmM0QWg1S3VpUlFoQkx2aGhha0JGZzY2R2FiUGFFKzc5ZkkxRWZXU3ludwp1RHBnTi82UUFVOUVCK3N4TVNTQ3ZjTDVndnV6bmVmMCtDc2p4QlN2OGJjNVIxU1pBaWtBcnQ1V1FKZE9qMXNPCnhrWEsvZ2pWZDlCZkJjZ2d2ZENSK2FXaTlLT0c3SnJmZHNndjNsQmJWRC9JdEZTcEViOXN5am5FbDk2WFlmSlYKRDVka0ZqOEsvME9jCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    server: https://38EE01DE6E34AA4A3FD08B0F69BBE334.gr7.us-east-1.eks.amazonaws.com
+  name: arn:aws:eks:us-east-1:537124943253:cluster/expense-dev
+contexts:
+- context:
+    cluster: arn:aws:eks:us-east-1:537124943253:cluster/expense-dev
+    user: arn:aws:eks:us-east-1:537124943253:cluster/expense-dev
+  name: arn:aws:eks:us-east-1:537124943253:cluster/expense-dev
+current-context: arn:aws:eks:us-east-1:537124943253:cluster/expense-dev
+kind: Config
+preferences: {}
+users:
+- name: arn:aws:eks:us-east-1:537124943253:cluster/expense-dev
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - --region
+      - us-east-1
+      - eks
+      - get-token
+      - --cluster-name
+      - expense-dev
+      - --output
+      - json
+      command: aws
