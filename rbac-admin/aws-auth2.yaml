@@ -1,0 +1,28 @@
+#fornuser ramesh
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::537124943253:role/eksctl-expense-dev-nodegroup-spot-NodeInstanceRole-XEplbFwzJfV4
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - groups:
+      - rl-pod
+      userarn: arn:aws:iam::537124943253:user/suresh
+      username: suresh
+    - groups:
+      - role-all
+      userarn: arn:aws:iam::537124943253:user/ramesh
+      username: ramesh
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"mapRoles":"- groups:\n  - system:bootstrappers\n  - system:nodes\n  rolearn: arn:aws:iam::537124943253:role/eksctl-expense-dev-nodegroup-spot-NodeInstanceRole-XEplbFwzJfV4\n  username: system:node:{{EC2PrivateDNSName}}\n","mapUsers":"- groups:\n  - rl-pod\n  userarn: arn:aws:iam::537124943253:user/suresh\n  username: suresh\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2025-03-11T09:45:16Z","name":"aws-auth","namespace":"kube-system","uid":"08e68376-c0ff-4369-b09e-576eb0a0532e"}}
+  creationTimestamp: "2025-03-11T09:45:16Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "9349"
+  uid: 08e68376-c0ff-4369-b09e-576eb0a0532e
