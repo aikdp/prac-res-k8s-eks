@@ -37,6 +37,7 @@ kind: ClusterRole
 metadata:
   # "namespace" omitted since ClusterRoles are not namespaced
   name: clstr-reader
+  namespace: expense
 rules:
 - apiGroups: [""]
   #
