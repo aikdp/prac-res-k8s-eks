@@ -1,0 +1,22 @@
+#EDIT  configmap of aws-auth in -n kube-system
+# kubectl get configmap aws-auth -n kube-system -o yaml
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::537124943253:role/eksctl-expense-dev-nodegroup-spot-NodeInstanceRole-XEplbFwzJfV4
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    - groups:
+      - clstr-reader
+      userarn: arn:aws:iam::537124943253:user/suresh
+      username: suresh
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2025-03-11T09:45:16Z"
+  name: aws-auth
+  namespace: kube-system
+  # resourceVersion: "1336"   #it will once upadated and when u apply
+  uid: 08e68376-c0ff-4369-b09e-576eb0a0532e
