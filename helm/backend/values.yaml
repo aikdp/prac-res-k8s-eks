@@ -3,6 +3,6 @@ deployment:
   imageVersion: v1
   # replica: 2
 hpa:
-  cpuUtilization: 5
+  cpuUtilization: 15
 service:
   servicePort: 8080
