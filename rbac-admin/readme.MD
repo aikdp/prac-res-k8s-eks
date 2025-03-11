@@ -54,11 +54,14 @@ metadata:
   uid: 08e68376-c0ff-4369-b09e-576eb0a0532e
 ```
 3. Apply: kubectl apply -f <configmap-name>  or
-You can directly edit: kubectl edit -n kube-system configmap/aws-auth
+You can directly edit: 
+```
+kubectl edit -n kube-system configmap/aws-auth
+```
 
-4. Once above stpes complted. Ask user to check whether they are able to access or not.
+4. Once above stpes completed. Ask user to check whether they are able to access or not.
 
-Users: users must configure kubectl commands (client to communicate ekx cluster), and 
+Users: users must configure kubectl commands (client to communicate eks cluster)
 ```
 aws eks update-kubeconfig --region <region-code> --name <cluster-name>
 
@@ -66,6 +69,6 @@ aws eks update-kubeconfig --region us-east-1 --name expense-dev
 ```
 
 5. Now user can see .kube/config file has been updated.
-6. Hence, user can bale to authrization to do some actions on eks cluster.
+6. Hence, user can able to authrization to do some actions on eks cluster.
 
 
