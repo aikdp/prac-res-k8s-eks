@@ -9,10 +9,10 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
-          - key: hardware #change
+          - key: env #change
             operator: In
             values:
-            - gpu #change
+            - test #change
         topologyKey: topology.kubernetes.io/zone
     # podAntiAffinity:
     #   preferredDuringSchedulingIgnoredDuringExecution:
@@ -25,6 +25,17 @@ spec:
     #           values:
     #           - shell    #change
     #       topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx:alpine
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  labels:
+    env: test
+spec:
   containers:
   - name: nginx
     image: nginx:alpine
