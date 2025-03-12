@@ -1,0 +1,18 @@
+#node-affinity
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution: #pod should go, if condition match
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: hardware
+            operator: In
+            values:
+            - gpu
+  containers:
+  - name: nginx
+    image: nginx:stable-perl

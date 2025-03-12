@@ -1,0 +1,30 @@
+#POD affinity: means pod2 schedule, where pod-1 runs.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-affinity
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: security #change
+            operator: In
+            values:
+            - firewall #change
+        topologyKey: topology.kubernetes.io/zone
+    # podAntiAffinity:
+    #   preferredDuringSchedulingIgnoredDuringExecution:
+    #   - weight: 100
+    #     podAffinityTerm:
+    #       labelSelector:
+    #         matchExpressions:
+    #         - key: linux #change
+    #           operator: In
+    #           values:
+    #           - shell    #change
+    #       topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx:alpine

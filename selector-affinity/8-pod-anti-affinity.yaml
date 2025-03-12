@@ -1,0 +1,54 @@
+#POD1
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine
+---
+#POD affinity: means pod2 schedule, where pod-1 runs.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: env #change
+            operator: In
+            values:
+            - test #change
+        topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx:stable-perl
+---
+#pod-antoNodeAffinity
+#POD affinity: means pod2 schedule, where pod-1 runs.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod3
+spec:
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: env #change
+              operator: In
+              values:
+              - test    #change
+          topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx:alpine

@@ -1,0 +1,19 @@
+#node-affinity
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution: #pod try to shedule any one the nodes, if condition not met also.
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: hardware
+              operator: In
+              values:
+              - gpu #try change with otherv value that is not labeled.
+  containers:
+  - name: nginx
+    image: nginx:alpine

@@ -1,0 +1,12 @@
+#Taint: Pod not scheduled in tainted node
+#taint the node: kubectl taint nodes node1 key1=value1:NoSchedule
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine

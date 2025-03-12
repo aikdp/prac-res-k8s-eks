@@ -69,6 +69,6 @@ aws eks update-kubeconfig --region us-east-1 --name expense-dev
 ```
 
 5. Now user can see .kube/config file has been updated.
-6. Hence, user can able to authrization to do some actions on eks cluster.
+6. Hence, user can able to authorization to do some actions on eks cluster.
 
 

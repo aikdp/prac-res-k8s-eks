@@ -1,0 +1,17 @@
+#label node: kubectl label nodes <node-ip> hardware=gpu
+#Toleration: pod might schedule in  tainted nodes but not gauranteed.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine
+  tolerations:
+  - key: "hardware"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoSchedule"

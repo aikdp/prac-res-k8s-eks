@@ -1,0 +1,63 @@
+#Create ingress for our app1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2
+  labels:
+    project: expense
+    component: app
+spec:
+  replicas: 1
+  matchLabels:
+    project: expense
+    component: app
+  template:
+    metadata:
+      labels:
+        project: expense
+        component: app
+    spec:
+      containers:
+        - name: app2
+          image: kdprasad028/myapp2:v1
+---
+#Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: app2
+spec:
+  selector:
+    project: expense
+    component: app
+  ports:
+    - name: app2-port
+      protocol: TCP 
+      port: 80  #Service port
+      targetPort: 80  #container port
+---
+#Create Ingress resource for External acess of app1 application
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app2
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+    alb.ingress.kubernetes.io/certificate-arn: <arn-of -https-certificate>
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443]'
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: expense
+spec:
+  ingressClassName: alb
+  rules:
+  - host: "app2.telugudevops.online"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: app2  #LB selects app1 service, and service will connects to pod and target IP
+            port:
+              number: 80
