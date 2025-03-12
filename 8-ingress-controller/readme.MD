@@ -41,3 +41,17 @@ helm repo add eks https://aws.github.io/eks-charts
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=expense-dev --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
 ```
 (ref: https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/installation/)
+
+Check:
+```
+kubectl get pods -n kube-system
+```
+NAME                                            READY   STATUS    RESTARTS   AGE
+aws-load-balancer-controller-5f8ccd4f94-6jndb   1/1     Running   0          43s
+aws-load-balancer-controller-5f8ccd4f94-rs4d4   1/1     Running   0          43s
+aws-node-jdlnx                                  2/2     Running   0          24m
+coredns-586b798467-5dlzs                        1/1     Running   0          17m
+coredns-586b798467-mq5bb                        1/1     Running   0          16m
+kube-proxy-tl87r                                1/1     Running   0          24m
+metrics-server-7b6c698b65-b8g8f                 1/1     Running   0          17m
+metrics-server-7b6c698b65-gq7lt                 1/1     Running   0          16m
