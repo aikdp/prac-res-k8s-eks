@@ -8,9 +8,10 @@ metadata:
     component: web
 spec:
   replicas: 1
-  matchLabels:
-    project: expense
-    component: web
+  selector:
+    matchLabels:
+        project: expense
+        component: web
   template:
     metadata:
       labels:
