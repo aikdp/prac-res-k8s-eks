@@ -9,10 +9,10 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
-          - key: security #change
+          - key: hardware #change
             operator: In
             values:
-            - firewall #change
+            - gpu #change
         topologyKey: topology.kubernetes.io/zone
     # podAntiAffinity:
     #   preferredDuringSchedulingIgnoredDuringExecution:
