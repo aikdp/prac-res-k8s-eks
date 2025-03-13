@@ -61,6 +61,7 @@ data:
             location = /50x.html {
             }
         }
+        # #this is as part of nginx configmap, 13-03-2025
 
       # Settings for a TLS enabled server.
       #
