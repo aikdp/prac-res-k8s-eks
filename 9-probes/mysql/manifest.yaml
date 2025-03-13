@@ -1,0 +1,55 @@
+#create Mysql YamlFile
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mysql
+  namespace: expense
+  labels:
+    project: robo
+    state: qa
+    tier: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: robo
+      state: qa
+      tier: db
+  template:
+    metadata:
+      labels:
+        project: robo
+        state: qa
+        tier: db
+    spec:
+      containers:
+        - name: mysql
+          image: kdprasad028/mysql:v1
+          readinessProbe:   #ready to accept traffic
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 15 #kubelet first run the readiness 15sec after the container starts.
+            periodSeconds: 10 #kubelete continue to run this check every 10sec
+          livenessProbe:  #mysql doesn't have http connection so, readines and liveness will same
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 15
+            periodSeconds: 10
+---
+#create Service to commu mysql Pods
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: expense
+spec:
+  selector:
+    project: robo
+    state: qa
+    tier: db
+  ports:
+  - name: mysql-port
+    protocol: TCP
+    port: 3306
+    targetPort: 3306
+         

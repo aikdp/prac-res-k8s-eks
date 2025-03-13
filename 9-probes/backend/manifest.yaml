@@ -1,0 +1,95 @@
+#create ConfigMap for DB_HOST=mysql
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: expense
+data:
+  DB_HOST: mysql
+---
+#create backend YamlFile
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: backend
+  namespace: expense
+  labels:
+    project: robo
+    state: qa
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: robo
+      state: qa
+      tier: backend
+  template:
+    metadata:
+      labels:
+        project: robo
+        state: qa
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: kdprasad028/backend:v1
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:            #limits should be greater than or equal to requests
+              cpu: 100m
+              memory: 128Mi
+          envFrom:
+           - configMapRef:
+               name: backend-config
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+---
+#create Service to commu backend Pods
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: expense
+spec:
+  selector:
+    project: robo
+    state: qa
+    tier: backend
+  ports:
+  - name: backend-port
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+#create HPA
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-hpa
+  namespace: expense
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 15

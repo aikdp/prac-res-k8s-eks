@@ -1,6 +1,6 @@
 # AWS Load Balancer Controller
 
-* Should install LB controller along with some OIDC, IAM Policies, etc.
+* Should install LB controller along with some OIDC, IAM Policies, IAM Role, Service Account, Helm to install AWS Load balancer Controller etc.
 
 1. Create an IAM OIDC provider. You can skip this step if you already have one for your cluster.
 ```
@@ -42,7 +42,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
 ```
 (ref: https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/installation/)
 
-Check:
+Check: Once the above steps completed. You will get below info of AWS LB Controller running.
 ```
 kubectl get pods -n kube-system
 ```
