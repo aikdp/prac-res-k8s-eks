@@ -135,9 +135,11 @@ spec:
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 10
-          volumeMounts:   #this for configmap mount
-            - name: config-volume
-              mountPath: /etc/nginx/nginx.conf
+          volumeMounts: #this for configmap mount
+          - name: config-volume
+            mountPath: "etc/nginx/nginx.conf"
+            subPath: nginx.conf
+            readOnly: true
       volumes:
         - name: config-volume
           configMap:
