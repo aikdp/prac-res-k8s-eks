@@ -4,6 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: frontend-config
+  namespace: expense
 data:
   nginx.conf: |   
     # For more information on configuration, see:
