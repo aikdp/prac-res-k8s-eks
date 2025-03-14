@@ -42,16 +42,19 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
 ```
 (ref: https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/installation/)
 
-Check: Once the above steps completed. You will get below info of AWS LB Controller running.
+* Check: Once the above steps completed. You will get below info of AWS LB Controller running.
 ```
 kubectl get pods -n kube-system
 ```
 NAME                                            READY   STATUS    RESTARTS   AGE
-aws-load-balancer-controller-5f8ccd4f94-6jndb   1/1     Running   0          43s
-aws-load-balancer-controller-5f8ccd4f94-rs4d4   1/1     Running   0          43s
-aws-node-jdlnx                                  2/2     Running   0          24m
-coredns-586b798467-5dlzs                        1/1     Running   0          17m
-coredns-586b798467-mq5bb                        1/1     Running   0          16m
-kube-proxy-tl87r                                1/1     Running   0          24m
-metrics-server-7b6c698b65-b8g8f                 1/1     Running   0          17m
-metrics-server-7b6c698b65-gq7lt                 1/1     Running   0          16m
+aws-load-balancer-controller-5fd7794f55-277qq   1/1     Running   0          24s
+aws-load-balancer-controller-5fd7794f55-9wzwm   1/1     Running   0          24s
+aws-node-jspd2                                  2/2     Running   0          16m
+aws-node-q252t                                  2/2     Running   0          16m
+coredns-789f8477df-bg5jh                        1/1     Running   0          21m
+coredns-789f8477df-vw699                        1/1     Running   0          21m
+eks-pod-identity-agent-25sjl                    1/1     Running   0          16m
+eks-pod-identity-agent-qqkz2                    1/1     Running   0          16m
+kube-proxy-7dgzm                                1/1     Running   0          17m
+kube-proxy-z4zdb                                1/1     Running   0          17m
+
