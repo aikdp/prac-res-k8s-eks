@@ -5,7 +5,7 @@ metadata:
   name: backend-config
   namespace: expense
 data:
-  DB_HOST: mysql
+  DB_HOST: expense-dev.c96s2yeo6pdv.us-east-1.rds.amazonaws.com #rds address
 ---
 #create backend YamlFile
 apiVersion: apps/v1

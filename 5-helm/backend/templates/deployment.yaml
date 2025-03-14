@@ -1,3 +1,12 @@
+#create ConfigMap for DB_HOST=mysql
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: expense
+data:
+  DB_HOST: "{{ .Values.configmap.DB_HOST }}
+---
 #create backend YamlFile
 apiVersion: apps/v1
 kind: Deployment

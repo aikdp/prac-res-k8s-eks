@@ -6,3 +6,5 @@ hpa:
   cpuUtilization: 15
 service:
   servicePort: 8080
+configmap:
+  DB_HOST: "expense-dev.c96s2yeo6pdv.us-east-1.rds.amazonaws.com" # rds Address
