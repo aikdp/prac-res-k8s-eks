@@ -92,5 +92,5 @@ spec:
   serviceRef:
     name: frontend # route traffic to the frontend service
     port: 8080
-  targetGroupARN: <arn-to-targetGroup>
+  targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:537124943253:targetgroup/expense-dev-frontend/acda3c710fda1014
   targetType: ip
