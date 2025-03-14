@@ -93,7 +93,6 @@ mv /tmp/eksctl /usr/local/bin
 eksctl version
 ```
 
-
 # Install Kubens
 
 ```
