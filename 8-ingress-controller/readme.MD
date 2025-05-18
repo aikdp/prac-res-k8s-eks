@@ -12,6 +12,9 @@ eksctl utils associate-iam-oidc-provider \
 2. If your cluster is in any other region:
 ```
 curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.12.0/docs/install/iam_policy.json
+
+curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.13.2/docs/install/iam_policy.json
+
 ```
 3. Create an IAM policy named AWSLoadBalancerControllerIAMPolicy. If you downloaded a different policy, replace iam-policy with the name of the policy that you downloaded.
 ```
@@ -44,6 +47,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
 
 * Check: Once the above steps completed. You will get below info of AWS LB Controller running.
 ```
+
 kubectl get pods -n kube-system
 ```
 NAME                                            READY   STATUS    RESTARTS   AGE

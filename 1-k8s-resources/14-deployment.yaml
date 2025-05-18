@@ -17,7 +17,7 @@ spec:
         app: backend
         module: qa
     spec:
-      containers:
+      containers: 
       - name: dep-nginx
         image: nginx:mainline
 

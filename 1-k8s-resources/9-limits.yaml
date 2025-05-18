@@ -16,4 +16,4 @@ spec:
           memory: 20Mi
         limits:
           cpu: 150m
-          memeory: 50MiB
+          memory: 50MiB

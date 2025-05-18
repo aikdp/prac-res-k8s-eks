@@ -3,7 +3,7 @@
 * ClusterRole and Cluster RoleBinding are Cluster Level
 * Based on the users and their desigantions, we will provide access to the resources that are in Namespace and cluster levels.
 
-* Resources: nodes, pods, pv, pvc, deployments, namespaces, services, crontabs, configmaps, jobs, endpoints, etc These are all respources in a cluster.
+* Resources: nodes, pods, pv, pvc, deployments, namespaces, services, crontabs, configmaps, jobs, endpoints, etc These are all resources in a cluster.
 
 * Verbs: get, list, watch, delete, create, patch, update, deletecollection, view, post, these are actions that will peroform on resources.
 

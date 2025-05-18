@@ -89,7 +89,7 @@ curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$
 
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
-mv /tmp/eksctl /usr/local/bin
+sudo mv /tmp/eksctl /usr/local/bin
 
 VALIDATE $? "Installation of Eksctl"
 
